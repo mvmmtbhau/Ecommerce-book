@@ -12,13 +12,21 @@ const router = createRouter({
             component: () => import(/* webpackChunkName: "register" */'@/views/admin/test.vue'),
         },
         {
-            path: '/user/test',
-            name: 'User',
+            path: '/',
+            name: 'HomePage',
             meta: {
-              layout: 'user',
+                layout: 'user',
             },
-            component: () => import(/* webpackChunkName: "register" */'@/views/user/test.vue'),
-          },
+            component: () => import(/* webpackChunkName: "register" */'@/views/user/HomePage.vue'),
+        },
+        {
+            path: '/shop',
+            name: 'ShopPage',
+            meta: {
+                layout: 'user',
+            },
+            component: () => import(/* webpackChunkName: "register" */'@/views/user/ShopPage.vue'),
+        },
     ]
 })
 
