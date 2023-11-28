@@ -11,3 +11,4 @@ export function registerGlobalComponent(app) {
         defineAsyncComponent(() => import('@/layouts/admin.vue')
         ));
 }
+

@@ -4,21 +4,71 @@
 @tailwind components;
 @tailwind utilities;
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    /* Firefox */
+}
+
+input {
+    border: 0;
+    outline: 0;
+}
+
+input:focus {
+    outline: none !important;
+}
+
 @layer base {
     body {
         @apply font-poppins
     }
-    h1,h2,h3,h4,h5,h6 {
+
+    h1, h2, h3, h4, h5, h6 {
         @apply font-roboto
     }
 }
 
 @layer components {
-    .size-selector input:checked +label {
+    .size-selector input:checked+label {
         @apply bg-primary text-white
+    }
+
+    .input-box {
+        @apply block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded placeholder-gray-400 focus:border-primary focus:ring-0
     }
 }
 
 .banner-img {
-    background-image: url('../../assets/images/banner-bg.jpg');
+    background-image: url('../../assets/images/banner.jpg');
+}
+
+.error-message,
+.errorText {
+    color: red;
+}
+
+.zoom-effect {
+    transform: scale(1.2);
+}
+
+.magnifier {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #333;
+    pointer-events: none;
+    /* Cho phép chuột đi qua ô vuông */
+    display: none;
+}
+
+.image-container:hover .magnifier {
+    display: block;
 }

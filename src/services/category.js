@@ -9,6 +9,18 @@ class CategoryService {
         return (await this.api.get('/category'));   
     }
 
+    async addNew(data) {
+        return (await this.api.post('/category/add', data));
+    }
+
+    async updateCate(data) {
+        return (await this.api.post('/category/update', data));
+    }
+
+    async deleteCate(id) {
+        return (await this.api.delete('/category/delete/'+id));
+    }
+
     // async updateAccount(data){
     //     return (await this.api(
     //         {

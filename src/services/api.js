@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const token = localStorage.getItem("token_of_hau");
+const token = localStorage.getItem("token-hau");
 
 axios.defaults.headers.common["authorization"] = `Bearer ` + token;
 
@@ -33,8 +33,8 @@ instance.interceptors.response.use(
       const response = error?.response;
       if (response.status === 401) {
         // alert('Phiên đăng nhập kết thúc, xin đăng nhập lại');
+        localStorage.removeItem("token-hau");
         window.location.href ="/";
-        localStorage.removeItem("token_of_hau");
         return Promise.reject(error);
       }
       if (response.status === 403) {

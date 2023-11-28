@@ -1,8 +1,7 @@
 // initial state
 // shape: [{ id, quantity }]
 const state = () => ({
-    isLogin: false,
-    user: null,
+    wishlist: null,
 });
 
 // getters
@@ -10,17 +9,16 @@ const getters = {};
 
 // actions
 const actions = {
-    setUser({ commit }, user) {
-        commit("setUser", user);
+    setWishlist({ commit }, wishlist) {
+        commit("setWishlist", wishlist);
     }
 };
 
 // mutations
 
 const mutations = {
-    setUser(state, data) {
-        state.user = data;
-        state.isLogin = true;
+    setWishlist(state, data) {
+        state.wishlist = data;
     }
 };
 
