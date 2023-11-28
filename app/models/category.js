@@ -4,8 +4,14 @@ mongoose.set('strictQuery', true);
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-    title: String,
-    description: String,
+    title: {
+        type: String,
+        required: true
+    },
+    num: {
+        type: Number,
+        default: 0,
+    },
     updatedAt: {
         type: Date,
         default: Date.now(),

@@ -8,20 +8,25 @@ const route = require('./app/routes')
 const app = express();
 
 const config = require('./app/configs');
+const path = require("path");
+require('dotenv').config();
 
 app.use(cors());
+
 app.use(express.json());
+app.use("/image/products", express.static(path.join(__dirname, "./app/uploads/products/")));
+app.use("/image/avatars", express.static(path.join(__dirname, "./app/uploads/avatars/")));
 app.use(bodyParser.urlencoded({
     extended: false,
 }))
 
 const pathConfig = require('./path');
 global.__base = __dirname + '\\app\\';
-global.__path_app = __base + pathConfig.folder_app + '\\';
+// global.__path_app = __base + pathConfig.folder_app + '\\';
 
-global.__path_models = __base + pathConfig.folder_models + '\\';
-global.__path_routers = __base + pathConfig.folder_routers + '\\';
-global.__path_schemas = __base + pathConfig.folder_schemas + '\\';
+// global.__path_models = __base + pathConfig.folder_models + '\\';
+// global.__path_routers = __base + pathConfig.folder_routers + '\\';
+// global.__path_schemas = __base + pathConfig.folder_schemas + '\\';
 global.__path_configs = __base + pathConfig.folder_configs + '\\';
 
 // const systemConfig = require(__path_configs + 'system');
@@ -37,10 +42,7 @@ mongoose.connect(`mongodb+srv://${databaseConfig.username}:${databaseConfig.pass
 
 route(app);
 
-app.get('/', (req, res) => {
-    res.send('Hello world');
-});
-
+require('./passport')
 
 const PORT = config.app.port;
 
